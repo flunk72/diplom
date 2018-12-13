@@ -1,5 +1,8 @@
 // Modal
 /*jshint esversion: 6 */
+
+
+
 let body = document.querySelector("body"),
     backCall = document.querySelector("contact_us"),
     measurer = document.querySelector(".popup_engineer");
@@ -22,6 +25,13 @@ window.addEventListener("click", (event) => {
         measurer.style.display = "none";
     }
 });
+
+setTimeout(modal, 4000);
+        function modal (){
+            measurer.style.display = 'block';
+        }
+
+
 
 //Form
 
@@ -78,3 +88,5 @@ window.addEventListener("click", (event) => {
         updateClock();
     };
     setClock("timer", deadline);
+
+
