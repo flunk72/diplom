@@ -9,7 +9,8 @@ let body = document.querySelector("body"),
     popupCalc = document.querySelector(".popup_calc"),
     popupCalcProfile = document.querySelector(".popup_calc_profile"),
     popupCalcEnd = document.querySelector(".popup_calc_end"),
-    overlayTell = document.querySelector(".popup");
+    overlayTell = document.querySelector(".popup"),
+    closeImg = document.querySelector(".row");
 
 closeBtn = addEventListener("click", function (event) {
     if (event.target && event.target.tagName == "STRONG") {
@@ -65,8 +66,8 @@ function modal() {
     document.body.style.overflow = 'hidden';
 }
 
-let inputsPhone = document.querySelectorAll('input[name="user_phone"]'),
-    inputsSize = document.querySelectorAll('input[name="size"]');
+let inputsPhone = document.querySelectorAll('input[name="user_phone"]');
+
 
 function onlyNumber(input) {
     input.oninput = function () {
@@ -74,7 +75,6 @@ function onlyNumber(input) {
     };
 }
 [...inputsPhone].forEach(elem => onlyNumber(elem));
-[...inputsSize].forEach(elem => onlyNumber(elem));
 
 
 // Timer
@@ -208,12 +208,14 @@ allForm(popupFormModalCalcEnd);
 
 let tabMain = document.querySelector("body"),
     tabContent = document.querySelectorAll(".tab_content_glazing"),
+    tabActive = document.querySelectorAll(".tab_active"),
     tab = document.querySelectorAll(".glazing_block");
 
 let hideTabContent = (a) => {
     for (let i = a; i < tabContent.length; i++) {
         tabContent[i].classList.remove("show");
         tabContent[i].classList.add("hide");
+        tabActive[i].classList.remove("active");
     }
 };
 hideTabContent(1);
@@ -222,6 +224,7 @@ let showTabContent = (b) => {
     if (tabContent[b].classList.contains("hide")) {
         tabContent[b].classList.remove("hide");
         tabContent[b].classList.add("show");
+        tabActive[b].classList.add("active");
     }
 };
 tabMain.addEventListener("click", (event) => {
@@ -236,44 +239,46 @@ tabMain.addEventListener("click", (event) => {
         });
     }
 });
-/*
+
     //tabs furnish
 
     let furnish = document.querySelector("body"),
-    tabContent = document.querySelectorAll(".tabcontent_furnish"),
-    tab = document.querySelectorAll(".furnish_tab");
+    tabsContent = document.querySelectorAll(".tab_content_furnish"),
+    clickActive = document.querySelectorAll(".click_active"),
+    tabs = document.querySelectorAll(".decoration_item");
 
-function hideTabContent(a) {
-    for (let i = a; i < tabContent.length; i++) {
-        tabContent[i].classList.remove("show");
-        tabContent[i].classList.add("hide");
-    }
-    for (let i = a; i < tab.length; i++) {
-        tab[i].classList.remove("after_click");
-        tab[i].classList.add("no_click");
+function hideTabsContent(a) {
+    for (let i = a; i < tabsContent.length; i++) {
+        tabsContent[i].classList.remove("show");
+        tabsContent[i].classList.add("hide");
+        clickActive[i].classList.remove("after_click");
     }
 }
-hideTabContent(1);
+hideTabsContent(1);
 
-function showTabContent(b) {
-    if (tabContent[b].classList.contains("hide")) {
-        tabContent[b].classList.remove("hide");
-        tabContent[b].classList.add("show");
-    }
-    if (tab[b].classList.contains("no_click")) {
-        tab[b].classList.remove("no_click");
-        tab[b].classList.add("after_click");
+function showTabsContent(b) {
+    if (tabsContent[b].classList.contains("hide")) {
+        tabsContent[b].classList.remove("hide");
+        tabsContent[b].classList.add("show");
+        clickActive[b].classList.add("after_click");
     }
 }
-furnish.addEventListener("click", e => {
-    let target = e.target;
+furnish.addEventListener("click", (event) => {
+    let target = event.target;
 
-    if (target && target.classList.contains("furnish_tab") || target.parentNode.classList.contains("furnish_tab")) {
-        [...tab].forEach(function (e, i) {
-            if (target == e || target.parentNode == e) {
-                hideTabContent(0);
-                showTabContent(i);
+    if (target && target.classList.contains("decoration_item") || target.parentNode.classList.contains("decoration_item")) {
+        [...tabs].forEach(function (event, i) {
+            if (target == event || target.parentNode == event) {
+                hideTabsContent(0);
+                showTabsContent(i);
             }
         });
+    }
+});
+
+// закрытие по подлжке фотографий
+/*window.addEventListener("click", (event) => {
+    if (event.target == row) {
+        row.style.display = "none";
     }
 });*/
