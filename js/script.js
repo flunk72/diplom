@@ -207,17 +207,13 @@ allForm(popupFormModalCalcEnd);
 // tabs window
 
 let tabMain = document.querySelector("body"),
-    tabContent = document.querySelectorAll(".tabcontent_glazing"),
+    tabContent = document.querySelectorAll(".tab_content_glazing"),
     tab = document.querySelectorAll(".glazing_block");
 
 let hideTabContent = (a) => {
     for (let i = a; i < tabContent.length; i++) {
         tabContent[i].classList.remove("show");
         tabContent[i].classList.add("hide");
-    }
-    for (let i = a; i < tab.length; i++) {
-        tab[i].childNodes[2].nextSibling.classList.remove('active');
-        tab[i].childNodes[2].nextSibling.classList.add('no_active');
     }
 };
 hideTabContent(1);
@@ -226,10 +222,6 @@ let showTabContent = (b) => {
     if (tabContent[b].classList.contains("hide")) {
         tabContent[b].classList.remove("hide");
         tabContent[b].classList.add("show");
-    }
-    if (tab[b].childNodes[2].nextSibling.classList.contains("no_active")) {
-        tab[b].childNodes[2].nextSibling.classList.remove("no_active");
-        tab[b].childNodes[2].nextSibling.classList.add("active");
     }
 };
 tabMain.addEventListener("click", (event) => {
