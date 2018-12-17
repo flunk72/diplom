@@ -242,10 +242,10 @@ tabMain.addEventListener("click", (event) => {
 
     //tabs furnish
 
-    let furnish = document.querySelector("body"),
+    let furnish = document.querySelector(".decoration_slider"),
     tabsContent = document.querySelectorAll(".tab_content_furnish"),
-    clickActive = document.querySelectorAll(".click_active"),
-    tabs = document.querySelectorAll(".decoration_item");
+    clickActive = document.querySelectorAll(".no_click"),
+    tabs = document.querySelectorAll(".click_active");
 
 function hideTabsContent(a) {
     for (let i = a; i < tabsContent.length; i++) {
@@ -266,7 +266,7 @@ function showTabsContent(b) {
 furnish.addEventListener("click", (event) => {
     let target = event.target;
 
-    if (target && target.classList.contains("decoration_item") || target.parentNode.classList.contains("decoration_item")) {
+    if (target && target.classList.contains("click_active") || target.parentNode.classList.contains("click_active")) {
         [...tabs].forEach(function (event, i) {
             if (target == event || target.parentNode == event) {
                 hideTabsContent(0);
