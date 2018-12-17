@@ -278,38 +278,37 @@ furnish.addEventListener("click", (event) => {
 
 
 // images
-let imgWrapper = document.createElement('div'),
-    linkImg = document.querySelectorAll('.big_img_link'),
-    bigImg = document.createElement('img'),
-    worksWrapper = document.querySelector('.works');
+let wrapper = document.createElement('div'),
+    linkPicture = document.querySelectorAll('.img_link'),
+    img = document.createElement('img'),
+    workWrapper = document.querySelector('.works');
 
-imgWrapper.classList.add('popup');
-worksWrapper.appendChild(imgWrapper);
-imgWrapper.style.display = 'none';
-imgWrapper.style.justifyContent = 'center';
-imgWrapper.style.alignItems = 'center';
-imgWrapper.appendChild(bigImg);
+wrapper.classList.add('popup');
+workWrapper.appendChild(wrapper);
+wrapper.style.justifyContent = 'center';
+wrapper.style.alignItems = 'center';
+wrapper.appendChild(img);
 
-let prevImg = document.querySelectorAll('.worksImg');
-for (let i = 0; i < prevImg.length; i++) {
-    prevImg[i].addEventListener('click', function () {
-        for (let l = 0; l < linkImg.length; l++) {
-            if (i == l) {
+let imgMain = document.querySelectorAll('.worksImg');
+for (let i = 0; i < imgMain.length; i++) {
+    imgMain[i].addEventListener('click', function () {
+        for (let a = 0; a < linkPicture.length; a++) {
+            if (i == a) {
 
-                bigImg.setAttribute('src', linkImg[l].href);
+                img.setAttribute('src', linkPicture[a].href);
             }
         }
     });
 }
 
-worksWrapper.addEventListener('click', function (e) {
+workWrapper.addEventListener('click', function (e) {
     e.preventDefault();
     let elem = e.target;
     if (elem && elem.classList.contains('worksImg')) {
-        imgWrapper.style.display = 'flex';
+        wrapper.style.display = 'flex';
     }
     if (elem && elem.matches('div.popup')) {
-        imgWrapper.style.display = 'none';
+        wrapper.style.display = 'none';
     }
 });
 // calc
