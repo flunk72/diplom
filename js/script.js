@@ -240,9 +240,9 @@ tabMain.addEventListener("click", (event) => {
     }
 });
 
-    //tabs furnish
+//tabs furnish
 
-    let furnish = document.querySelector(".decoration_slider"),
+let furnish = document.querySelector(".decoration_slider"),
     tabsContent = document.querySelectorAll(".tab_content_furnish"),
     clickActive = document.querySelectorAll(".no_click"),
     tabs = document.querySelectorAll(".click_active");
@@ -276,9 +276,40 @@ furnish.addEventListener("click", (event) => {
     }
 });
 
-// закрытие по подлжке фотографий
-/*window.addEventListener("click", (event) => {
-    if (event.target == row) {
-        row.style.display = "none";
+
+// images
+let imgWrapper = document.createElement('div'),
+    linkImg = document.querySelectorAll('.big_img_link'),
+    bigImg = document.createElement('img'),
+    worksWrapper = document.querySelector('.works');
+
+imgWrapper.classList.add('popup');
+worksWrapper.appendChild(imgWrapper);
+imgWrapper.style.display = 'none';
+imgWrapper.style.justifyContent = 'center';
+imgWrapper.style.alignItems = 'center';
+imgWrapper.appendChild(bigImg);
+
+let prevImg = document.querySelectorAll('.worksImg');
+for (let i = 0; i < prevImg.length; i++) {
+    prevImg[i].addEventListener('click', function () {
+        for (let l = 0; l < linkImg.length; l++) {
+            if (i == l) {
+
+                bigImg.setAttribute('src', linkImg[l].href);
+            }
+        }
+    });
+}
+
+worksWrapper.addEventListener('click', function (e) {
+    e.preventDefault();
+    let elem = e.target;
+    if (elem && elem.classList.contains('worksImg')) {
+        imgWrapper.style.display = 'flex';
     }
-});*/
+    if (elem && elem.matches('div.popup')) {
+        imgWrapper.style.display = 'none';
+    }
+});
+// calc
